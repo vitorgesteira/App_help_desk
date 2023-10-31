@@ -21,12 +21,24 @@
         <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
-    </nav>
+    </nav>   
 
-    <div class="container"> 
+    <div class="container">  
       <div class="row">
         <div class="card-login">
           <div class="card">
+            <?php if(isset($_GET['login']) && $_GET['login'] == 'erro') { ?>
+                <span class="text-danger">
+                  Usuário ou senha inválido(s)
+                </span>
+            <?php } ?> 
+            
+            <?php if(isset($_GET['login']) && $_GET['login'] == 'erro2') { ?>
+                <span class="text-danger">
+                  Faça login antes de acessar as páginas protegidas
+                </span>
+            <?php } ?> 
+                  
             <div class="card-header">
               Login
             </div>
@@ -40,11 +52,8 @@
                 <div class="form-group">
                   <input name="senha" type="password" class="form-control" placeholder="Senha">
                 </div>
-                <?php if(isset($_GET['login']) && $_GET['login'] == 'erro') { ?>
-                  <div class="text-danger">
-                    Usuário ou senha inválido(s)
-                  </div>
-                <?php } ?>                 
+
+                               
 
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
               </form>
