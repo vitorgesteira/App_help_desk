@@ -1,4 +1,6 @@
-<?php require_once "validador_acesso.php" ?>
+<?php 
+require_once "validador_acesso.php";
+?>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -24,7 +26,9 @@
       </a>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="logoff.php">SAIR</a>
+          <a href="logoff.php" class="nav-link">
+          SAIR
+          </a>
         </li>
       </ul>
     </nav>
@@ -65,7 +69,7 @@
 
                     <div class="row mt-5">
                       <div class="col-6">
-                        <a class="btn btn-lg btn-warning btn-block" href="home.php">Voltar</a>
+                        <a href="home.php" class="btn btn-lg btn-warning btn-block">Voltar</a>
                       </div>
 
                       <div class="col-6">

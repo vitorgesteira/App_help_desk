@@ -12,18 +12,18 @@
     $descricao = str_replace('#','-',$_POST['descricao']);
     //implode('#',$_POST);
 
-    $texto = $titulo.'#'.$categoria.'#'.$descricao.PHP_EOL;
+    $texto = $titulo.'#'.$categoria.'#'.$descricao .PHP_EOL;
+    // echo $texto;
     
     //http://php.net/manual/pt_BR/function.fopen.php
     //Abrindo o arquivo
     $arquivo = fopen('arquivo.hd','a');
-
+     
     //Escrevendo texto no arquivo
     fwrite($arquivo,$texto);
 
     //Fechando o arquivo
     fclose($arquivo);
 
-    //echo $texto;
     header('Location: abrir_chamado.php')
 ?>
