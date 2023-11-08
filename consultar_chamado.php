@@ -2,7 +2,7 @@
 <?php 
   //array de chamados
   $chamados = array();
-
+  
   //http://php.net/manual/pt_BR/function.fopen.php
   //abrir arquivo.hd
   $arquivo = fopen('arquivo.hd', 'r');
@@ -60,6 +60,13 @@
               <?php foreach($chamados as $chamado) { ?>
                 <?php 
                   $chamado_dados = explode('#', $chamado);
+
+                  if($_SESSION['perfil_id'] == 2){
+                    //apenas exibir se foi criado pelo mesmo usuario
+                    if($chamado_dados[0] != $_SESSION['id']){
+                      continue;
+                    }
+                  }
                   
                   if(count($chamado_dados) < 3){
                     continue;
@@ -67,9 +74,9 @@
                 ?>
                 <div class="card mb-3 bg-light">
                   <div class="card-body">
-                    <h5 class="card-title"><?= $chamado_dados[0] ?></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[1] ?></h6>
-                    <p class="card-text"><?= $chamado_dados[2] ?></p>
+                    <h5 class="card-title"><?= $chamado_dados[1] ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[2] ?></h6>
+                    <p class="card-text"><?= $chamado_dados[3] ?></p>
                   </div>
                 </div>
               <?php } ?>

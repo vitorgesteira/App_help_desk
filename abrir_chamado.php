@@ -1,5 +1,5 @@
 <?php 
-require_once "validador_acesso.php";
+  require_once "validador_acesso.php";
 ?>
 <html>
   <head>
@@ -27,7 +27,7 @@ require_once "validador_acesso.php";
       <ul class="navbar-nav">
         <li class="nav-item">
           <a href="logoff.php" class="nav-link">
-          SAIR
+            SAIR
           </a>
         </li>
       </ul>
