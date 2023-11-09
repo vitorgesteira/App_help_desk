@@ -11,9 +11,20 @@
   while(!feof($arquivo)){
     //linhas
     $registro = fgets($arquivo);//recupera a linha
-    $chamados[] = $registro;
+    // echo $registro. '<br/>';
+
+    $chamados[] = $registro;     
   }
   
+  foreach($chamados as $chamado){
+    $chamados_dados = explode('#', $chamado);
+    if($_SESSION['perfil_id'] == 2){
+      if($chamados_dados[0] != $_SESSION['id']){
+        continue;
+      }
+    }
+    $chamados_perfil[] = $chamados_dados;    
+  }
   fclose($arquivo);
 ?>
 
@@ -57,26 +68,17 @@
             </div>
             
             <div class="card-body">                
-              <?php foreach($chamados as $chamado) { ?>
-                <?php 
-                  $chamado_dados = explode('#', $chamado);
-
-                  if($_SESSION['perfil_id'] == 2){
-                    //apenas exibir se foi criado pelo mesmo usuario
-                    if($chamado_dados[0] != $_SESSION['id']){
-                      continue;
-                    }
-                  }
-                  
-                  if(count($chamado_dados) < 3){
+              <?php foreach($chamados_perfil as $chamado_perfil) { ?>
+                <?php                   
+                  if(count($chamado_perfil) < 3){
                     continue;
                   }
                 ?>
                 <div class="card mb-3 bg-light">
                   <div class="card-body">
-                    <h5 class="card-title"><?= $chamado_dados[1] ?></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_dados[2] ?></h6>
-                    <p class="card-text"><?= $chamado_dados[3] ?></p>
+                    <h5 class="card-title"><?= $chamado_perfil[1] ?></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><?= $chamado_perfil[2] ?></h6>
+                    <p class="card-text"><?= $chamado_perfil[3] ?></p>
                   </div>
                 </div>
               <?php } ?>
